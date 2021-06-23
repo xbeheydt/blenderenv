@@ -2,6 +2,7 @@
 Top-level for Cli entrypoint blenderenv.
 """
 
+from sys import exit as sys_exit
 from typing import List
 
 import click
@@ -45,16 +46,30 @@ def _local(unset: bool, version: List[str]) -> None:
     available Blender versions.
     """
     if unset and version:
-        raise UsageError("--unset and version not used in same time.")
-    exit(0)
+        try:
+            raise UsageError("--unset and version not used in same time.")
+        except UsageError:
+            sys_exit(1)
+    sys_exit(0)
 
 
-@click.command(name="global")
-def _global():
+@click.command(
+    name="global", short_help="Set or show the global Blender version."
+)
+@click.argument("version")
+@click.option("--unset", is_flag=True)
+def _global(unset: bool, version: str) -> None:
     """
-    Set or show the global Blender version.
+    Sets the global Blenderenv version. You can override the global version at
+    any time by setting a directory-specific version with "blenderenv local"
+    or by setting the `BLENDER_VERSION' environment variable.
     """
-    pass
+    if unset and version:
+        try:
+            raise UsageError("--unset and version not used in same time.")
+        except UsageError:
+            sys_exit(1)
+    sys_exit(0)
 
 
 @click.command(name="install")
@@ -95,4 +110,4 @@ _register_commands(
 )
 
 if __name__ == "__main__":
-    exit(main())
+    sys_exit(main())
