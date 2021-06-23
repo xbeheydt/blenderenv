@@ -58,3 +58,24 @@ class TestHelpMessages:
             "--unset",
         ]
         self._run_test_messages()
+
+    def test_install(self, cli):
+        """
+        Testing `install` command messages.
+        """
+        self.result = cli.invoke(main, ["install", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv install [OPTIONS]",
+            "Install a Blender version.",
+            "-f",
+            "--force",
+            "Install even if the version appears to be installed already.",
+            "-c",
+            "--clear",
+            "Removes downloaded installers from the cache to free space.",
+            "-l",
+            "--list",
+            "List all available versions.",
+        ]
+        self._run_test_messages()
