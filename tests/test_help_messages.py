@@ -124,3 +124,15 @@ class TestHelpMessages:
             "Show the current Blender version and its origin.",
         ]
         self._run_test_messages()
+
+    def test_versions(self, cli):
+        """
+        Testing `versions` command messages.
+        """
+        self.result = cli.invoke(main, ["versions", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv versions [OPTIONS]",
+            "List all Python versions available to blenderenv.",
+        ]
+        self._run_test_messages()
