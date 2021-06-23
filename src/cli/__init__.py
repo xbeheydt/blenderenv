@@ -47,11 +47,7 @@ def _local(unset: bool, version: List[str]) -> None:
     available Blender versions.
     """
     if unset and version:
-        try:
-            raise UsageError("--unset and version not used in same time.")
-        except UsageError:
-            sys_exit(1)
-    sys_exit(0)
+        raise UsageError("--unset and version not used in same time.")
 
 
 @click.command(
