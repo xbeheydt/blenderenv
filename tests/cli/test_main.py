@@ -2,13 +2,13 @@
 Testing `main` command.
 """
 
-from blenderenv import __name__, __version__
+from blenderenv import __name__ as prog_name, __version__ as prog_version
 from cli import main
 
 
-def test_main_version(cli):
+def test_main_version(app):
     """
     Testing `main --version`.
     """
-    result = cli.invoke(main, ["--version"])
-    assert f"{__name__} v{__version__}\n" == result.output
+    result = app.invoke(main, ["--version"])
+    assert f"{prog_name} v{prog_version}\n" == result.output

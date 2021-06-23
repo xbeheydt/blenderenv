@@ -14,11 +14,11 @@ class TestHelpMessages:
         for message in self.messages:
             assert message in self.result.output
 
-    def test_main(self, cli):
+    def test_main(self, app):
         """
         Testing main help messages.
         """
-        self.result = cli.invoke(main, ["--help"])
+        self.result = app.invoke(main, ["--help"])
 
         self.messages = [
             "Usage: blenderenv",
@@ -33,11 +33,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_local(self, cli):
+    def test_local(self, app):
         """
         Testing `local` command messages.
         """
-        self.result = cli.invoke(main, ["local", "--help"])
+        self.result = app.invoke(main, ["local", "--help"])
 
         self.messages = [
             "Usage: blenderenv local [OPTIONS] [VERSION]...",
@@ -57,11 +57,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_global(self, cli):
+    def test_global(self, app):
         """
         Testing `global` command messages.
         """
-        self.result = cli.invoke(main, ["global", "--help"])
+        self.result = app.invoke(main, ["global", "--help"])
 
         self.messages = [
             "Usage: blenderenv global [OPTIONS] VERSION",
@@ -72,11 +72,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_install(self, cli):
+    def test_install(self, app):
         """
         Testing `install` command messages.
         """
-        self.result = cli.invoke(main, ["install", "--help"])
+        self.result = app.invoke(main, ["install", "--help"])
 
         self.messages = [
             "Usage: blenderenv install [OPTIONS]",
@@ -93,11 +93,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_uninstall(self, cli):
+    def test_uninstall(self, app):
         """
         Testing `uninstall` command messages.
         """
-        self.result = cli.invoke(main, ["uninstall", "--help"])
+        self.result = app.invoke(main, ["uninstall", "--help"])
 
         self.messages = [
             "Usage: blenderenv uninstall [OPTIONS] [VERSION]...",
@@ -113,11 +113,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_version(self, cli):
+    def test_version(self, app):
         """
         Testing `version` command messages.
         """
-        self.result = cli.invoke(main, ["version", "--help"])
+        self.result = app.invoke(main, ["version", "--help"])
 
         self.messages = [
             "Usage: blenderenv version [OPTIONS]",
@@ -125,11 +125,11 @@ class TestHelpMessages:
         ]
         self._run_test_messages()
 
-    def test_versions(self, cli):
+    def test_versions(self, app):
         """
         Testing `versions` command messages.
         """
-        self.result = cli.invoke(main, ["versions", "--help"])
+        self.result = app.invoke(main, ["versions", "--help"])
 
         self.messages = [
             "Usage: blenderenv versions [OPTIONS]",
