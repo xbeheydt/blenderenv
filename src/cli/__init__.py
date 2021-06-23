@@ -13,14 +13,14 @@ from cli.helpers import _register_commands
 
 
 @click.group(name=__name__)
-@click.option("--version", help="Print version", is_flag=True)
-def main(version: bool) -> None:
+@click.version_option(
+    version=__version__, prog_name=__name__, message="%(prog)s v%(version)s"
+)
+def main():
     """
     Blender version and env manager.
     """
-    if version:
-        click.echo(f"{__name__} v{__version__}")
-        exit(0)
+    pass
 
 
 @click.command(

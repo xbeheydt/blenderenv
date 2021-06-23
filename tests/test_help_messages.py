@@ -22,7 +22,7 @@ class TestHelpMessages:
 
         self.messages = [
             "Usage: blenderenv",
-            "Print version",
+            "Show the version and exit.",
             "Blender version and env manager.",
             "Set or show the global Blender version.",
             "Set or show the local specific Blender version.",
