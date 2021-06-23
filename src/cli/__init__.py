@@ -35,4 +35,4 @@ register_commands(
 )
 
 if __name__ == "__main__":
-    sys_exit(main())
+    sys_exit(main())  # pragma: no cover
