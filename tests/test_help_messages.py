@@ -16,11 +16,10 @@ class TestHelpMessages:
 
     def test_main(self, cli):
         """
-        Testing main help message.
+        Testing main help messages.
         """
         self.result = cli.invoke(main, ["--help"])
 
-        assert 0 == self.result.exit_code
         self.messages = [
             "Usage: blenderenv",
             "Print version",
@@ -31,5 +30,18 @@ class TestHelpMessages:
             "Uninstall a specific Blender version.",
             "Show the current Blender version and its origin.",
             "List all Python versions available to blenderenv.",
+        ]
+        self._run_test_messages()
+
+    def test_local(self, cli):
+        """
+        Testing `local` command messages.
+        """
+        self.result = cli.invoke(main, ["local", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv local [OPTIONS] [VERSION]...",
+            "<version> can be specified multiple times and should be a version",
+            "--unset",
         ]
         self._run_test_messages()

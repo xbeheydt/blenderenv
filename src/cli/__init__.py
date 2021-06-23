@@ -2,7 +2,10 @@
 Top-level for Cli entrypoint blenderenv.
 """
 
+from typing import List
+
 import click
+from click.exceptions import UsageError
 
 from blenderenv import __name__, __version__
 from cli.helpers import _register_commands
@@ -10,21 +13,40 @@ from cli.helpers import _register_commands
 
 @click.group(name=__name__)
 @click.option("--version", help="Print version", is_flag=True)
-def main(version: bool):
+def main(version: bool) -> None:
     """
     Blender version and env manager.
     """
     if version:
         click.echo(f"{__name__} v{__version__}")
-        exit(1)
+        exit(0)
 
 
-@click.command(name="local")
-def _local():
+@click.command(
+    name="local", short_help="Set or show the local specific Blender version."
+)
+@click.argument("version", nargs=-1)
+@click.option("--unset", is_flag=True)
+def _local(unset: bool, version: List[str]) -> None:
     """
-    Set or show the local specific Blender version.
+    Sets the local application-specific Blender version by writing the
+    version name to a file named ".blender-version".
+
+    When you run a blender command, blenderenv will look for a
+    ".blender-version" file in the current directory and each parent directory.
+    If no such file is found in the tree, pyenv will use the global Blender
+    version specified with "blenderenv global". A version specified with the
+    "BLENDERENV_VERSION" environment variable takes precedence over local
+    and global versions.
+
+    <version> can be specified multiple times and should be a version
+    tag known to blenderenv. The special version string "system" will use
+    your default system Python. Run "blendenv versions" for a list of
+    available Blender versions.
     """
-    pass
+    if unset and version:
+        raise UsageError("--unset and version not used in same time.")
+    exit(0)
 
 
 @click.command(name="global")
