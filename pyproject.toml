@@ -37,7 +37,7 @@ blenderenv = 'cli:main'
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--cov=blenderenv"
+addopts = "--cov=blenderenv --cov=cli"
 
 [tool.isort]
 profile = "black"
