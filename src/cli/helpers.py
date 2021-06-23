@@ -7,7 +7,7 @@ from typing import List
 from click.core import Command, Group
 
 
-def _register_commands(group: Group, commands: List[Command]) -> None:
+def register_commands(group: Group, commands: List[Command]) -> None:
     """
     Function helps to registered commands in group.
     """

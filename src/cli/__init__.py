@@ -15,7 +15,7 @@ from cli.commands import (
     _version,
     _versions,
 )
-from cli.helpers import _register_commands
+from cli.helpers import register_commands
 
 
 @click.group(name=__name__)
@@ -30,7 +30,7 @@ def main():
 
 
 # Main group register
-_register_commands(
+register_commands(
     main, [_local, _global, _install, _uninstall, _version, _versions]
 )
 
