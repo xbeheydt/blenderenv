@@ -27,6 +27,7 @@ def main(version: bool) -> None:
     name="local", short_help="Set or show the local specific Blender version."
 )
 @click.argument("version", nargs=-1)
+# TODO help unset
 @click.option("--unset", is_flag=True)
 def _local(unset: bool, version: List[str]) -> None:
     """
@@ -57,6 +58,7 @@ def _local(unset: bool, version: List[str]) -> None:
     name="global", short_help="Set or show the global Blender version."
 )
 @click.argument("version")
+# TODO help unset
 @click.option("--unset", is_flag=True)
 def _global(unset: bool, version: str) -> None:
     """
