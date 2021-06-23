@@ -53,14 +53,20 @@ line-length = 79
 target-version = ['py37']
 include = '\.pyi?$'
 extend-exclude = '''
-.git
-^/__pychache__
-.mypy_cache
-.tox
-.coverage
-build
-dist
-tests/data
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \__pycache__
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
 '''
 
 [tool.poetry.dependencies]
