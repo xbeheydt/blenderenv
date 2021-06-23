@@ -7,8 +7,11 @@ from click.testing import CliRunner
 
 
 @pytest.fixture
-def cli():
+def cli(monkeypatch, tmp_path):
     """
     Make a runner for cli entrepoint.
     """
-    return CliRunner()
+    monkeypatch.setenv("HOME", tmp_path, prepend=False)
+    b_dir = tmp_path / ".blenderenv"
+    b_dir.mkdir()
+    yield CliRunner()
