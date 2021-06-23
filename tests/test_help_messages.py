@@ -45,3 +45,16 @@ class TestHelpMessages:
             "--unset",
         ]
         self._run_test_messages()
+
+    def test_global(self, cli):
+        """
+        Testing `global` command messages.
+        """
+        self.result = cli.invoke(main, ["global", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv global [OPTIONS] VERSION",
+            "Sets the global Blenderenv version. You can override the global ",
+            "--unset",
+        ]
+        self._run_test_messages()
