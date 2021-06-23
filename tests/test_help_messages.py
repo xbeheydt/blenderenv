@@ -112,3 +112,15 @@ class TestHelpMessages:
             "*Caution* Attempt to remove all installed versions.",
         ]
         self._run_test_messages()
+
+    def test_version(self, cli):
+        """
+        Testing `version` command messages.
+        """
+        self.result = cli.invoke(main, ["version", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv version [OPTIONS]",
+            "Show the current Blender version and its origin.",
+        ]
+        self._run_test_messages()
