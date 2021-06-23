@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "blenderenv"
+version = "0.1.0"
+description = "Blender version manager"
+authors = ["Xavier Beheydt <xavier.beheydt@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/xbeheydt/blenderenv"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Natural Language :: English",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux"
+]
+include = ["README.md", "LICENSE"]
+packages = [
+    { include = "blenderenv", from = "src" },
+    { include = "cli", from = "src" },
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+blenderenv = 'cli:main'
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov=blenderenv"
+
+[tool.isort]
+profile = "black"
+lines_after_imports = "2"
+multi_line_output = "3"
+line_length = "79"
+use_parentheses = "True"
+combine_as_imports = "True"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+click = "^8.0.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+rope = "^0.19.0"
+pytest = "^6.2.4"
+pytest-cov = "^2.12.1"
+bump2version = "^1.0.1"
+black = "^21.6b0"
+isort = "^5.9.1"
+pre-commit = "^2.13.0"
+pyupgrade = "^2.19.4"
+yamllint = "^1.26.1"
+mypy = "^0.910"
