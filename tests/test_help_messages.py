@@ -79,3 +79,21 @@ class TestHelpMessages:
             "List all available versions.",
         ]
         self._run_test_messages()
+
+    def test_uninstall(self, cli):
+        """
+        Testing `uninstall` command messages.
+        """
+        self.result = cli.invoke(main, ["uninstall", "--help"])
+
+        self.messages = [
+            "Usage: blenderenv uninstall [OPTIONS] [VERSION]...",
+            "Uninstall a specific Blender version.",
+            "-f",
+            "--force",
+            "Attempt to remove the specified version without prompting",
+            "-a",
+            "--all",
+            "*Caution* Attempt to remove all installed versions.",
+        ]
+        self._run_test_messages()
