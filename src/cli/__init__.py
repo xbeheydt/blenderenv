@@ -62,9 +62,9 @@ def _local(unset: bool, version: List[str]) -> None:
 @click.option("--unset", is_flag=True)
 def _global(unset: bool, version: str) -> None:
     """
-    Sets the global Blenderenv version. You can override the global version at
+    Sets the global Blender version. You can override the global version at
     any time by setting a directory-specific version with "blenderenv local"
-    or by setting the `BLENDER_VERSION' environment variable.
+    or by setting the "BLENDER_VERSION" environment variable.
     """
     if unset and version:
         try:
@@ -103,8 +103,8 @@ def _install():
     "--force",
     is_flag=True,
     help="Attempt to remove the specified version without prompting"
-    "for confirmation. If the version does not exist, do not"
-    "display an error message.",
+    " for confirmation. If the version does not exist, do not"
+    " display an error message.",
 )
 @click.option(
     "-a",

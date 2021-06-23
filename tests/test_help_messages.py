@@ -41,7 +41,18 @@ class TestHelpMessages:
 
         self.messages = [
             "Usage: blenderenv local [OPTIONS] [VERSION]...",
-            "<version> can be specified multiple times and should be a version",
+            "Sets the local application-specific Blender version by writing the version",
+            'name to a file named ".blender-version".',
+            # 'When you run a blender command, blenderenv will look for a ".blender-',
+            # "file in the current directory and each parent directory. If no such",
+            # "file is found in the tree, pyenv will use the global Blender version",
+            # 'specified with "blenderenv global". A version specified with the',
+            # '"BLENDERENV_VERSION" environment variable takes precedence over local and',
+            # "global versions.",
+            "<version> can be specified multiple times and should be a version tag known ",
+            'The special version string "system" will use your default',
+            'Run "blendenv versions" for a list of available Blender',
+            "versions.",
             "--unset",
         ]
         self._run_test_messages()
@@ -54,7 +65,9 @@ class TestHelpMessages:
 
         self.messages = [
             "Usage: blenderenv global [OPTIONS] VERSION",
-            "Sets the global Blenderenv version. You can override the global ",
+            "Sets the global Blender version. You can override the global version at any",
+            'time by setting a directory-specific version with "blenderenv local" or by',
+            'setting the "BLENDER_VERSION" environment variable.',
             "--unset",
         ]
         self._run_test_messages()
@@ -91,7 +104,9 @@ class TestHelpMessages:
             "Uninstall a specific Blender version.",
             "-f",
             "--force",
-            "Attempt to remove the specified version without prompting",
+            "Attempt to remove the specified version without prompting for",
+            "confirmation. If the version does not exist, do not display an",
+            "error message.",
             "-a",
             "--all",
             "*Caution* Attempt to remove all installed versions.",
