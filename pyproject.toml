@@ -48,6 +48,9 @@ line_length = "79"
 use_parentheses = "True"
 combine_as_imports = "True"
 
+[tool.black]
+line-length = 79
+
 [tool.poetry.dependencies]
 python = "^3.7"
 click = "^8.0.1"
