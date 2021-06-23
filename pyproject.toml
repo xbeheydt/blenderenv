@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "blenderenv"
-version = "0.1.0"
+version = "0.0.0"
 description = "Blender version manager"
 authors = ["Xavier Beheydt <xavier.beheydt@gmail.com>"]
 license = "MIT"
@@ -41,6 +41,7 @@ addopts = "--cov=blenderenv"
 
 [tool.isort]
 profile = "black"
+ensure_newline_before_comments = "True"
 lines_after_imports = "2"
 multi_line_output = "3"
 line_length = "79"
