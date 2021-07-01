@@ -7,7 +7,7 @@ from cli import main
 
 class TestHelpMessages:
     """
-    Class tester all help messages
+    Class tests all cli help messages
     """
 
     def _run_test_messages(self):
