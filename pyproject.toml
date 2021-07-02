@@ -23,17 +23,13 @@ classifiers = [
     "Operating System :: POSIX :: Linux"
 ]
 include = ["README.md", "LICENSE"]
-packages = [
-    { include = "blenderenv", from = "src" },
-    { include = "cli", from = "src" },
-]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-blenderenv = 'cli:main'
+blenderenv = 'blenderenv.cli:main'
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -72,6 +68,9 @@ extend-exclude = '''
 [tool.poetry.dependencies]
 python = "^3.7"
 click = "^8.0.1"
+requests = "^2.25.1"
+PyGithub = "^1.55"
+beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
@@ -86,3 +85,4 @@ pyupgrade = "^2.19.4"
 yamllint = "^1.26.1"
 mypy = "^0.910"
 mkdocs = "^1.2.1"
+pytest-mock = "^3.6.1"
