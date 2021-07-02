@@ -49,7 +49,7 @@ class CustomCliRunner(CliRunner):
     Custom cli runner which prepare project folder test.
     """
 
-    def __init__(self, tmp_path):
+    def __init__(self):
         super().__init__()
 
 
