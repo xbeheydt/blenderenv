@@ -14,9 +14,10 @@ def test_globals_var(app: AppSetup):
         BLENDERENV_HOME,
         CACHE_FOLDER,
         CONFIG_FILE,
+        DB_FILE,
+        DB_SCHEMA_FILE,
         LIB_FOLDER,
         RELEASE_TYPE_DEFAULT,
-        RELEASES_DB_FILE,
         RELEASES_TYPES,
         SHIMS_FOLDER,
         VENDOR_FOLDER,
@@ -31,6 +32,7 @@ def test_globals_var(app: AppSetup):
     assert VERSIONS_FOLDER == app.versions
     assert LIB_FOLDER == app.lib
     assert VENDOR_FOLDER == app.vendor
-    assert RELEASES_DB_FILE == app.blenderenv_home / "database"
+    assert DB_FILE == app.blenderenv_home / "database"
+    assert DB_SCHEMA_FILE == app.lib / "schema.sql"
     assert RELEASE_TYPE_DEFAULT == "prebuilt"
     assert RELEASES_TYPES == ["all", "prebuilt", "source"]

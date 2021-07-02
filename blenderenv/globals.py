@@ -19,6 +19,8 @@ VERSIONS_FOLDER = BLENDERENV_HOME / "versions"
 LIB_FOLDER = BLENDERENV_HOME / "lib"
 VENDOR_FOLDER = LIB_FOLDER / "_vendor"
 
-RELEASES_DB_FILE = BLENDERENV_HOME / "database"
 RELEASE_TYPE_DEFAULT = "prebuilt"
 RELEASES_TYPES = ["all", "prebuilt", "source"]
+
+DB_FILE = BLENDERENV_HOME / "database"
+DB_SCHEMA_FILE = LIB_FOLDER / "schema.sql"

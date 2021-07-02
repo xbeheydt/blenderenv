@@ -3,6 +3,8 @@ Configuration for pytest
 """
 
 import os
+import shutil
+from pathlib import Path
 
 import pytest
 from click.testing import CliRunner
@@ -59,7 +61,13 @@ def app(tmp_path_factory):
     """
     Configure app application for tests.
     """
-    yield AppSetup(tmp_path_factory)
+    app = AppSetup(tmp_path_factory)
+
+    # Install files
+    project_folder = Path(__file__).parent.parent
+    shutil.copytree(project_folder / "blenderenv", app.lib, dirs_exist_ok=True)
+
+    yield app
 
 
 @pytest.fixture
