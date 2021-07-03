@@ -3,11 +3,10 @@ Modules helps to handle database
 """
 
 import sqlite3
+from pathlib import Path
 from sqlite3 import Connection
 from types import TracebackType
 from typing import Optional, Type
-
-from blenderenv.globals import DB_FILE, DB_SCHEMA_FILE
 
 
 class Database:
@@ -15,12 +14,17 @@ class Database:
     Class model as Database.
     """
 
-    def __init__(self) -> None:
-        self.__con = self.__get_db()
+    def __init__(self, path: Path) -> None:
+        self.__path = path
+        self.__con = self.__get_connexion()
 
-    def init(self) -> None:
-        with open(DB_SCHEMA_FILE) as schema:
-            self.__con.executescript(schema.read())
+    @property
+    def path(self) -> Path:
+        return self.__path
+
+    def executescript(self, path: Path) -> None:
+        with open(path) as script:
+            self.__con.executescript(script.read())
 
     def __enter__(self):
         return self
@@ -38,7 +42,7 @@ class Database:
             self.__con.commit()
         self.__con.close()
 
-    def __get_db(self) -> Connection:
-        db = sqlite3.connect(DB_FILE, detect_types=sqlite3.PARSE_DECLTYPES)
+    def __get_connexion(self) -> Connection:
+        db = sqlite3.connect(self.__path, detect_types=sqlite3.PARSE_DECLTYPES)
         db.row_factory = sqlite3.Row
         return db
