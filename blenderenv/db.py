@@ -22,6 +22,12 @@ class Database:
     def path(self) -> Path:
         return self.__path
 
+    def close(self) -> None:
+        self.__con.close()
+
+    def commit(self) -> None:
+        self.__con.commit()
+
     def executescript(self, path: Path) -> None:
         with open(path) as script:
             self.__con.executescript(script.read())
